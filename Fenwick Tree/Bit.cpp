@@ -76,6 +76,22 @@ public:
         }
         return (curr + 1);
     }
+
+    int find1(int k)
+    {
+        int curr = 0, ans = 0, prevsum = 0;
+        for (int i = 19; i >= 0; i--)
+        {
+            if ((curr + (1 << i)) < N && fen[curr + (1 << i)] + prevsum < k)
+            {
+                ans = curr + (1 << i);
+                curr = ans;
+                prevsum += fen[curr];
+            }
+        }
+
+        return (ans + 1);
+    }
 };
 // BIT<int> bit(n);
 
@@ -85,6 +101,7 @@ public:
 // bit.updateMax(idx, val); // update all the values containing sum of range idx with max(val,fen[idx]);
 // bit.prefMax(idx);        // max in all the prefixes containing idx [l idx r] also inclusive
 // bit.find(k);             // idx of lower_bound of prefix sum
+// bit.find1(k);             // another version with bound condition
 
 int32_t main()
 {
