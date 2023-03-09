@@ -1,5 +1,3 @@
-// 0 based Indexing
-
 template <typename T>
 class SEG
 {
@@ -35,10 +33,10 @@ public:
         // updation part
 
         // sum
-        tree[idx] = tree[2 * idx + 1] + tree[2 * idx + 2];
+        // tree[idx] = tree[2 * idx + 1] + tree[2 * idx + 2];
 
         // min
-        // tree[idx] = min(tree[2 * idx + 1], tree[2 * idx + 2]);
+        tree[idx] = min(tree[2 * idx + 1], tree[2 * idx + 2]);
         return;
     }
 
@@ -52,13 +50,13 @@ public:
             // updation part
 
             // sum
-            tree[idx] += (high - low + 1) * lazy[idx];
+            // tree[idx] += (high - low + 1) * lazy[idx];
 
             // propogates the lazy updates downwards
             // for the remaing nodes to get updated
 
             // for minimum (min will be updated by lazy[idx]);
-            // tree[idx] += lazy[idx];
+            tree[idx] += lazy[idx];
 
             if (low != high)
             {
@@ -85,10 +83,10 @@ public:
             // updation part
 
             // sum
-            tree[idx] += (high - low + 1) * val;
+            // tree[idx] += (high - low + 1) * val;
 
             // for minimum (min will be updated by lazy[idx]);
-            // tree[idx] += val;
+            tree[idx] += val;
 
             // if children
             if (low != high)
@@ -108,10 +106,10 @@ public:
         // updation part
 
         // sum
-        tree[idx] = tree[2 * idx + 1] + tree[2 * idx + 2];
+        // tree[idx] = tree[2 * idx + 1] + tree[2 * idx + 2];
 
         // for min
-        // tree[idx] = min(tree[2 * idx + 1], tree[2 * idx + 2]);
+        tree[idx] = min(tree[2 * idx + 1], tree[2 * idx + 2]);
         return;
     }
 
@@ -124,10 +122,10 @@ public:
             // updation part
 
             // sum
-            tree[idx] += (high - low + 1) * lazy[idx];
+            // tree[idx] += (high - low + 1) * lazy[idx];
 
             // min
-            // tree[idx] += lazy[idx];
+            tree[idx] += lazy[idx];
 
             // propogates the lazy updates downwards
             // for the remaing nodes to get updated
@@ -145,10 +143,10 @@ public:
         if (high < l or r < low)
         {
             // for sum
-            return 0;
+            // return 0;
 
             // for min
-            // return INT_MAX;
+            return INT_MAX;
         }
 
         // complete overlap
@@ -162,10 +160,10 @@ public:
         // updation part
 
         // sum
-        return left + right;
+        // return left + right;
 
         // min
-        // return min(left, right);
+        return min(left, right);
     }
 
 public:
@@ -174,8 +172,8 @@ public:
         // no overlap
         // l r low high or low high l r
         if (r < low or l > high)
-            return 0;
-        // return INT_MAX; // min
+            // return 0;
+            return INT_MAX; // min
 
         // complete overlap
         // [l low high r]
@@ -190,10 +188,10 @@ public:
         // updation part
         // sum
 
-        return left + right;
+        // return left + right;
 
         // min
-        // return min(left, right);
+        return min(left, right);
     }
 
 public:
@@ -202,8 +200,6 @@ public:
         if (low == high)
         {
             // sum ranges increment tree[idx] by val case
-            // arr[idx] += val;
-
             // tree[idx] += val;
 
             // min and update single value case
@@ -219,11 +215,11 @@ public:
         // updation Part
         // sum
 
-        tree[idx] = tree[2 * idx + 1] + tree[2 * idx + 2];
+        // tree[idx] = tree[2 * idx + 1] + tree[2 * idx + 2];
 
         // min
 
-        // tree[idx] = min(tree[2 * idx + 1], tree[2 * idx + 2]);
+        tree[idx] = min(tree[2 * idx + 1], tree[2 * idx + 2]);
     }
 
     void rangeUpdate(int l, int r, int val)
