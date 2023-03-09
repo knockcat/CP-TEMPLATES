@@ -1,12 +1,10 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 template <typename T>
 class DSU
 {
 public:
     int N;
     vector<T> rank, parent, size;
+    DSU(){}
     DSU(int n)
     {
         N = n;
@@ -85,4 +83,3 @@ public:
 // dsu.unionByRank(u, v);
 // dsu.unionBySize(u,v);
 // dsu.isSame(u, v) bool
-
