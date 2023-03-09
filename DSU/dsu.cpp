@@ -4,7 +4,7 @@ class DSU
 public:
     int N;
     vector<T> rank, parent, size;
-    DSU(){}
+    DSU() {}
     DSU(int n)
     {
         N = n;
