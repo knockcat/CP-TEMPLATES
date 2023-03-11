@@ -124,6 +124,24 @@ public:
         return true;
     }
 
+    // check if all prefixes exist
+    bool checkIfAllPrefixesExists(string &word)
+    {
+        Node *temp = root;
+        bool ok = true;
+        for (int i = 0; i < word.size(); ++i)t
+        {
+            if (temp->containsKey(word[i]))
+            {
+                temp = temp->get(word[i]);
+                ok = ok & temp->isEnd();
+            }
+            else
+                return false;
+        }
+        return ok;
+    }
+
     // count frequency of given word
     int countWordsEqualTo(string &word)
     {
@@ -179,6 +197,7 @@ public:
 // obj->insert(word);
 // obj->search(word); // is exist
 // obj->startsWith(word); // prefix exist
+// obj->checkIfAllPrefixesExists(word) // all prefixes of string
 // obj->countWordsEqualTo(word); // freq of word
 // obj->countWordsStartingWith(str) // freq of prefix
 // obj->erase(word);
@@ -187,15 +206,16 @@ int32_t main()
 {
     Trie *obj = new Trie();
 
-    vector<string> words = {"apple", "app", "apps", "apxe", "bac", "bat"};
+    vector<string> words = {"apple", "app", "apps", "apxe", "bac", "bat", "b", "ba"};
     for (auto itr : words)
         obj->insert(itr);
 
-    string str = "app";
-    cout << obj->search(str) << endl;                 // 1
-    cout << obj->startsWith(str) << endl;             // 1
-    cout << obj->countWordsEqualTo(str) << endl;      // 1
-    cout << obj->countWordsStartingWith(str) << endl; // 3
+    string str = "app", word = "bat";
+    cout << obj->search(str) << endl;                    // 1
+    cout << obj->startsWith(str) << endl;                // 1
+    cout << obj->checkIfAllPrefixesExists(word) << endl; // 1
+    cout << obj->countWordsEqualTo(str) << endl;         // 1
+    cout << obj->countWordsStartingWith(str) << endl;    // 3
 
     obj->erase(str); // rem
 
