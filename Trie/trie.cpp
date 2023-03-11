@@ -129,7 +129,7 @@ public:
     {
         Node *temp = root;
         bool ok = true;
-        for (int i = 0; i < word.size(); ++i)t
+        for (int i = 0; i < word.size(); ++i)
         {
             if (temp->containsKey(word[i]))
             {
